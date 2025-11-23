@@ -15,7 +15,8 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",                 // Trust Localhost
-    "https://mindflow-ai.vercel.app"         // Trust Vercel
+    "https://mindflow-ai.vercel.app",         // Trust Vercel
+    "https://mindflow-ai-pi.vercel.app"
   ],
   credentials: true,                         // Allow cookies/tokens
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these actions
@@ -40,3 +41,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+
