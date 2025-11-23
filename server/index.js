@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const cors = require('cors');
+const cors = require('cors'); // <--- Import CORS
 const connectDB = require('./config/db');
 
 // Load env vars
@@ -11,18 +11,21 @@ connectDB();
 
 const app = express();
 
+// --- 1. CORS MIDDLEWARE (MUST BE AT THE TOP) ---
 app.use(cors({
   origin: [
-    "http://localhost:5173",                 // Your laptop
-    "https://mindflow-ai.vercel.app"         // <--- PASTE YOUR ACTUAL VERCEL LINK HERE
+    "http://localhost:5173",                 // Trust Localhost
+    "https://mindflow-ai.vercel.app"         // Trust Vercel
   ],
-  credentials: true // This allows cookies/tokens to be sent
+  credentials: true,                         // Allow cookies/tokens
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these actions
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Middleware
-app.use(express.json()); // Allows us to accept JSON data in the body
-app.use(cors());
+// --- 2. JSON PARSER ---
+app.use(express.json());
 
+// --- 3. ROUTES ---
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/notes', require('./routes/noteRoutes'));
 app.use('/api/ai', require('./routes/aiRoutes'));
