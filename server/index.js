@@ -11,6 +11,14 @@ connectDB();
 
 const app = express();
 
+app.use(cors({
+  origin: [
+    "http://localhost:5173",                 // Your laptop
+    "https://mindflow-ai.vercel.app"         // <--- PASTE YOUR ACTUAL VERCEL LINK HERE
+  ],
+  credentials: true // This allows cookies/tokens to be sent
+}));
+
 // Middleware
 app.use(express.json()); // Allows us to accept JSON data in the body
 app.use(cors());
