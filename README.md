@@ -51,20 +51,29 @@
 
 If you want to run this project locally on your machine, follow these steps:
 
+## 📦 Local Installation Guide
+
+If you want to run this project locally on your machine, follow these steps:
+
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/YOUR_USERNAME/taskmind-ai.git](https://github.com/YOUR_USERNAME/taskmind-ai.git)
+git clone https://github.com/YOUR_USERNAME/taskmind-ai.git
 cd taskmind-ai
+```
 
 ### 2. Install Dependencies
+```
 # Install Server Dependencies
 cd server
 npm install
+
 # Install Client Dependencies
 cd ../client
 npm install
+```
 
 ### 3. Setup Environment Variables
+```
 Create a file named .env inside the /server folder and add the following keys:
 # Server Configuration
 PORT=5000
@@ -80,9 +89,12 @@ JWT_SECRET=put_any_long_random_string_here
 GROQ_API_KEY=gsk_...
 # Get key from: [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
 HUGGINGFACE_API_KEY=hf_...
+```
 
 ### 4. Run the App
+```
 cd server
 npm run dev
 cd client
 npm run dev
+```
